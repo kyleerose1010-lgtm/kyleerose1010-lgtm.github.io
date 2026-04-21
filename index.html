@@ -156,8 +156,18 @@ function chaos() {
   document.getElementById("chaos").innerText =
     "DEBUG MODE: emotional overflow detected ❤️";
 }
+// FUNCTION FOR "LOVE GENERATOR"
+function love() {
+  const msg = document.getElementById("msg");
+  const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+  msg.innerText = randomMsg;
+}
 
-</script>
+// FUNCTION FOR "COMPILE"
+function compile() {
+  document.getElementById("compile").innerText = "Compiling... 100% complete! Affection acquired ❤️";
+}
 
+  </script>
 </body>
 </html>
