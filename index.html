@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boyfriend OS v1.0</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: "Courier New", monospace;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #38bdf8;
+    }
+
+    .box {
+      border: 1px solid #334155;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
+      border-radius: 10px;
+      background-color: #020617;
+    }
+
+    button {
+      background-color: #38bdf8;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0ea5e9;
+    }
+
+    #hidden {
+      display: none;
+      margin-top: 20px;
+      color: #f472b6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Boyfriend OS v1.0</h1>
+  <p>System initialized successfully.</p>
+
+  <div class="box">
+    <h3>Status</h3>
+    <p>✔ Intelligence: Extremely High</p>
+    <p>✔ Humor: Surprisingly Good</p>
+    <p>✔ Girlfriend Compatibility: 100%</p>
+    <p>⚠ Side Effect: Makes me obsessed</p>
+  </div>
+
+  <div class="box">
+    <h3>Generate Appreciation</h3>
+    <button onclick="generateLove()">Run Program</button>
+    <p id="loveMessage"></p>
+  </div>
+
+  <div class="box">
+    <h3>Bug Reports</h3>
+    <p>Bug #001: Too attractive</p>
+    <p>Status: Unresolved</p>
+    <p>Bug #002: Makes me miss him constantly</p>
+    <p>Status: Known issue</p>
+  </div>
+
+  <div class="box">
+    <h3>Compile Love.exe</h3>
+    <button onclick="compileLove()">Compile</button>
+    <p id="compileStatus"></p>
+  </div>
+
+  <button onclick="revealSecret()">???</button>
+
+  <p id="hidden">you found the hidden feature...  
+  okay but seriously i love you a lot ❤️</p>
+
+  <script>
+    const messages = [
+      "You make my brain happy and that’s rare.",
+      "You’re the only person I’d debug life with.",
+      "You’re annoyingly perfect.",
+      "I like you more than I planned to.",
+      "You’re my favorite human. It’s not even close."
+    ];
+
+    function generateLove() {
+      const random = Math.floor(Math.random() * messages.length);
+      document.getElementById("loveMessage").innerText = messages[random];
+    }
+
+    function compileLove() {
+      document.getElementById("compileStatus").innerText = "Compiling...";
+      setTimeout(() => {
+        document.getElementById("compileStatus").innerText = "Build successful. I love you.";
+      }, 1500);
+    }
+
+    function revealSecret() {
+      document.getElementById("hidden").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
