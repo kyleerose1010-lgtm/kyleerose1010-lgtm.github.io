@@ -110,6 +110,20 @@
       <option value="chaos">Chaos Mode</option>
     </select>
     <p id="menuOut"></p>
+    <script>
+  function login() {
+    const userInput = document.getElementById("code").value;
+    const errorText = document.getElementById("error");
+    
+    // Replace 'your-secret-code' with the actual password you want to use
+    if (userInput === "your-secret-code") {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("app").style.display = "block";
+    } else {
+      errorText.innerText = "Access Denied";
+    }
+  }
+</script>
   </div>
 
   <div class="box">
