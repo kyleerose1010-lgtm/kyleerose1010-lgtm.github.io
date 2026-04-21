@@ -1,133 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Boyfriend OS v2.0</title>
-  <style>
-    body {
-      background-color: #0b1020;
-      color: #e5e7eb;
-      font-family: "Courier New", monospace;
-      text-align: center;
-      padding: 30px;
-    }
-
-    h1 { color: #60a5fa; }
-
-    .box {
-      border: 1px solid #334155;
-      background: #0f172a;
-      margin: 15px auto;
-      padding: 15px;
-      width: 320px;
-      border-radius: 10px;
-    }
-
-    button {
-      background: #38bdf8;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    button:hover { background: #0ea5e9; }
-
-    #boot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      color: #22c55e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-direction: column;
-      z-index: 999;
-    }
-
-    #chaos {
-      display: none;
-      color: #f472b6;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-
-<div id="boot">
-  <p>Booting Boyfriend OS v2.0...</p>
-  <p>Loading emotional dependency module...</p>
+<div id="login">
+  <h2>Boyfriend OS Login</h2>
+  <p>Enter access code:</p>
+  <input type="password" id="code" placeholder="hint: it's you">
+  <br>
+  <button onclick="login()">Unlock</button>
+  <p id="error"></p>
 </div>
-
-<h1>Boyfriend OS v2.0</h1>
-
-<div class="box">
-  <h3>System Status</h3>
-  <p>💻 Stability: Surprisingly stable</p>
-  <p>🧠 Intelligence: High (but distracted by love)</p>
-  <p>💖 Emotional Output: Dangerous levels detected</p>
+<div id="app" style="display:none;">
+  <!-- ALL your existing Boyfriend OS content goes here -->
 </div>
+function login() {
+  const input = document.getElementById("code").value;
 
-<div class="box">
-  <h3>Love Generator</h3>
-  <button onclick="love()">Run Program</button>
-  <p id="msg"></p>
-</div>
-
-<div class="box">
-  <h3>System Logs</h3>
-  <p>[OK] Girlfriend appreciation module loaded</p>
-  <p>[OK] Sarcasm detector functioning</p>
-  <p>[WARN] Missing boyfriend presence</p>
-</div>
-
-<div class="box">
-  <h3>Compile Affection.exe</h3>
-  <button onclick="compile()">Compile</button>
-  <p id="compile"></p>
-</div>
-
-<button onclick="chaosMode()">Enable Debug Mode</button>
-
-<div id="chaos">
-  <p>ERROR 404: NORMAL BEHAVIOR NOT FOUND</p>
-  <p>you are now in chaos mode (i miss you)</p>
-</div>
-
-<script>
-const messages = [
-  "You’re my favorite piece of code in the universe.",
-  "I would debug your life anytime.",
-  "You make my brain lag in a good way.",
-  "You’re annoyingly perfect.",
-  "Still choosing you. Every time."
-];
-
-function love() {
-  document.getElementById("msg").innerText =
-    messages[Math.floor(Math.random() * messages.length)];
+  if (input.toLowerCase() === "you") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("app").style.display = "block";
+  } else {
+    document.getElementById("error").innerText = "Access denied. Try again.";
+  }
 }
+<div class="box">
+  <h3>System Audio</h3>
+  <button onclick="toggleMusic()">Play/Pause Mood</button>
+</div>
 
-function compile() {
-  document.getElementById("compile").innerText = "Compiling...";
-  setTimeout(() => {
-    document.getElementById("compile").innerText = "Build successful. I love you.";
-  }, 1200);
+<audio id="bgmusic" loop>
+  <source src="your-music-file.mp3" type="audio/mpeg">
+</audio>
+function toggleMusic() {
+  const music = document.getElementById("bgmusic");
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
 }
+<div class="box">
+  <h3>System Menu</h3>
 
-function chaosMode() {
-  document.getElementById("chaos").style.display = "block";
+  <select onchange="menuAction(this.value)">
+    <option value="">Select module</option>
+    <option value="love">Love Engine</option>
+    <option value="bugs">Bug Reports</option>
+    <option value="chaos">Chaos Mode</option>
+  </select>
+
+  <p id="menuOutput"></p>
+</div>
+function menuAction(val) {
+  const out = document.getElementById("menuOutput");
+
+  if (val === "love") {
+    out.innerText = "Running emotional dependency module...";
+  } else if (val === "bugs") {
+    out.innerText = "Too many feelings detected.";
+  } else if (val === "chaos") {
+    out.innerText = "SYSTEM OVERFLOW: missing boyfriend detected.";
+  }
 }
-
-// boot screen disappears
-setTimeout(() => {
-  document.getElementById("boot").style.display = "none";
-}, 2500);
-</script>
-
-</body>
-</html>
