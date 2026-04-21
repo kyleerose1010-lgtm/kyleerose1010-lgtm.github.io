@@ -34,13 +34,18 @@
 
     button:hover { background: #0ea5e9; }
 
+    input {
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      text-align: center;
+      margin-top: 10px;
+    }
+
     /* LOGIN SCREEN */
     #login {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: black;
       color: #22c55e;
       display: flex;
@@ -48,14 +53,6 @@
       align-items: center;
       justify-content: center;
       z-index: 999;
-    }
-
-    input {
-      padding: 8px;
-      border-radius: 6px;
-      border: none;
-      margin-top: 10px;
-      text-align: center;
     }
 
     #chaos {
@@ -68,11 +65,11 @@
 
 <body>
 
-<!-- LOGIN -->
+<!-- LOGIN SCREEN -->
 <div id="login">
   <h2>Boyfriend OS Login</h2>
   <p>Enter access code:</p>
-  <input type="password" id="code" placeholder="hint: you know it">
+  <input type="password" id="code" placeholder="hint: you">
   <button onclick="login()">Unlock</button>
   <p id="error"></p>
 </div>
@@ -85,7 +82,7 @@
   <div class="box">
     <h3>System Status</h3>
     <p>💻 Stability: Surprisingly stable</p>
-    <p>🧠 Intelligence: High but emotionally distracted</p>
+    <p>🧠 Intelligence: High (emotionally distracted)</p>
     <p>💖 Attachment Level: Critical</p>
   </div>
 
@@ -106,40 +103,22 @@
     <select onchange="menu(this.value)">
       <option value="">Select module</option>
       <option value="love">Love Engine</option>
-      <option value="bugs">Bug Report System</option>
+      <option value="bugs">Bug Reports</option>
       <option value="chaos">Chaos Mode</option>
     </select>
     <p id="menuOut"></p>
-    <script>
-  function login() {
-    const userInput = document.getElementById("code").value;
-    const errorText = document.getElementById("error");
-    
-    // Replace 'your-secret-code' with the actual password you want to use
-    if (userInput === "your-secret-code") {
-      document.getElementById("login").style.display = "none";
-      document.getElementById("app").style.display = "block";
-    } else {
-      errorText.innerText = "Access Denied";
-    }
-  }
-</script>
   </div>
 
   <div class="box">
-    <h3>System Audio</h3>
-    <button onclick="music()">Play / Pause Mood</button>
-    <audio id="bgm" loop>
-      <source src="" type="audio/mpeg">
-    </audio>
+    <h3>Debug Mode</h3>
+    <button onclick="chaos()">Enable</button>
+    <p id="chaos"></p>
   </div>
-
-  <button onclick="chaos()">Enable Debug Mode</button>
-  <p id="chaos"></p>
 
 </div>
 
 <script>
+
 const messages = [
   "You’re my favorite system process.",
   "I’d debug your life anytime.",
@@ -148,9 +127,9 @@ const messages = [
   "Still choosing you. Every loop."
 ];
 
+// LOGIN FUNCTION
 function login() {
   const code = document.getElementById("code").value;
-
   if (code.toLowerCase() === "youssef") {
     document.getElementById("login").style.display = "none";
     document.getElementById("app").style.display = "block";
@@ -159,18 +138,7 @@ function login() {
   }
 }
 
-function love() {
-  document.getElementById("msg").innerText =
-    messages[Math.floor(Math.random() * messages.length)];
-}
-
-function compile() {
-  document.getElementById("compile").innerText = "Compiling...";
-  setTimeout(() => {
-    document.getElementById("compile").innerText = "Build successful. I love you.";
-  }, 1200);
-}
-
+// MENU SYSTEM
 function menu(val) {
   const out = document.getElementById("menuOut");
 
@@ -183,16 +151,12 @@ function menu(val) {
   }
 }
 
-function music() {
-  const m = document.getElementById("bgm");
-  if (m.paused) m.play();
-  else m.pause();
-}
-
+// DEBUG MODE
 function chaos() {
   document.getElementById("chaos").innerText =
-    "DEBUG MODE: missing boyfriend detected ❤️";
+    "DEBUG MODE: emotional overflow detected ❤️";
 }
+
 </script>
 
 </body>
