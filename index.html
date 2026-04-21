@@ -1,112 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Boyfriend OS v1.0</title>
+  <title>Boyfriend OS v2.0</title>
   <style>
     body {
-      background-color: #0f172a;
-      color: #e2e8f0;
+      background-color: #0b1020;
+      color: #e5e7eb;
       font-family: "Courier New", monospace;
       text-align: center;
-      padding: 40px;
+      padding: 30px;
     }
 
-    h1 {
-      color: #38bdf8;
-    }
+    h1 { color: #60a5fa; }
 
     .box {
       border: 1px solid #334155;
-      padding: 20px;
-      margin: 20px auto;
-      width: 300px;
+      background: #0f172a;
+      margin: 15px auto;
+      padding: 15px;
+      width: 320px;
       border-radius: 10px;
-      background-color: #020617;
     }
 
     button {
-      background-color: #38bdf8;
+      background: #38bdf8;
       border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
+      padding: 10px;
       border-radius: 8px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
-    button:hover {
-      background-color: #0ea5e9;
+    button:hover { background: #0ea5e9; }
+
+    #boot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-direction: column;
+      z-index: 999;
     }
 
-    #hidden {
+    #chaos {
       display: none;
-      margin-top: 20px;
       color: #f472b6;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Boyfriend OS v1.0</h1>
-  <p>System initialized successfully.</p>
+<div id="boot">
+  <p>Booting Boyfriend OS v2.0...</p>
+  <p>Loading emotional dependency module...</p>
+</div>
 
-  <div class="box">
-    <h3>Status</h3>
-    <p>✔ Intelligence: Extremely High</p>
-    <p>✔ Humor: Surprisingly Good</p>
-    <p>✔ Girlfriend Compatibility: 100%</p>
-    <p>⚠ Side Effect: Makes me obsessed</p>
-  </div>
+<h1>Boyfriend OS v2.0</h1>
 
-  <div class="box">
-    <h3>Generate Appreciation</h3>
-    <button onclick="generateLove()">Run Program</button>
-    <p id="loveMessage"></p>
-  </div>
+<div class="box">
+  <h3>System Status</h3>
+  <p>💻 Stability: Surprisingly stable</p>
+  <p>🧠 Intelligence: High (but distracted by love)</p>
+  <p>💖 Emotional Output: Dangerous levels detected</p>
+</div>
 
-  <div class="box">
-    <h3>Bug Reports</h3>
-    <p>Bug #001: Too attractive</p>
-    <p>Status: Unresolved</p>
-    <p>Bug #002: Makes me miss him constantly</p>
-    <p>Status: Known issue</p>
-  </div>
+<div class="box">
+  <h3>Love Generator</h3>
+  <button onclick="love()">Run Program</button>
+  <p id="msg"></p>
+</div>
 
-  <div class="box">
-    <h3>Compile Love.exe</h3>
-    <button onclick="compileLove()">Compile</button>
-    <p id="compileStatus"></p>
-  </div>
+<div class="box">
+  <h3>System Logs</h3>
+  <p>[OK] Girlfriend appreciation module loaded</p>
+  <p>[OK] Sarcasm detector functioning</p>
+  <p>[WARN] Missing boyfriend presence</p>
+</div>
 
-  <button onclick="revealSecret()">???</button>
+<div class="box">
+  <h3>Compile Affection.exe</h3>
+  <button onclick="compile()">Compile</button>
+  <p id="compile"></p>
+</div>
 
-  <p id="hidden">you found the hidden feature...  
-  okay but seriously i love you a lot ❤️</p>
+<button onclick="chaosMode()">Enable Debug Mode</button>
 
-  <script>
-    const messages = [
-      "You make my brain happy and that’s rare.",
-      "You’re the only person I’d debug life with.",
-      "You’re annoyingly perfect.",
-      "I like you more than I planned to.",
-      "You’re my favorite human. It’s not even close."
-    ];
+<div id="chaos">
+  <p>ERROR 404: NORMAL BEHAVIOR NOT FOUND</p>
+  <p>you are now in chaos mode (i miss you)</p>
+</div>
 
-    function generateLove() {
-      const random = Math.floor(Math.random() * messages.length);
-      document.getElementById("loveMessage").innerText = messages[random];
-    }
+<script>
+const messages = [
+  "You’re my favorite piece of code in the universe.",
+  "I would debug your life anytime.",
+  "You make my brain lag in a good way.",
+  "You’re annoyingly perfect.",
+  "Still choosing you. Every time."
+];
 
-    function compileLove() {
-      document.getElementById("compileStatus").innerText = "Compiling...";
-      setTimeout(() => {
-        document.getElementById("compileStatus").innerText = "Build successful. I love you.";
-      }, 1500);
-    }
+function love() {
+  document.getElementById("msg").innerText =
+    messages[Math.floor(Math.random() * messages.length)];
+}
 
-    function revealSecret() {
-      document.getElementById("hidden").style.display = "block";
-    }
-  </script>
+function compile() {
+  document.getElementById("compile").innerText = "Compiling...";
+  setTimeout(() => {
+    document.getElementById("compile").innerText = "Build successful. I love you.";
+  }, 1200);
+}
+
+function chaosMode() {
+  document.getElementById("chaos").style.display = "block";
+}
+
+// boot screen disappears
+setTimeout(() => {
+  document.getElementById("boot").style.display = "none";
+}, 2500);
+</script>
 
 </body>
 </html>
