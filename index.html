@@ -1,60 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boyfriend OS v3.0</title>
+
+  <style>
+    body {
+      background-color: #0b1020;
+      color: #e5e7eb;
+      font-family: "Courier New", monospace;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 { color: #60a5fa; }
+
+    .box {
+      border: 1px solid #334155;
+      background: #0f172a;
+      margin: 15px auto;
+      padding: 15px;
+      width: 340px;
+      border-radius: 10px;
+    }
+
+    button {
+      background: #38bdf8;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover { background: #0ea5e9; }
+
+    /* LOGIN SCREEN */
+    #login {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: #22c55e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    input {
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #chaos {
+      display: none;
+      color: #f472b6;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
 <div id="login">
   <h2>Boyfriend OS Login</h2>
   <p>Enter access code:</p>
-  <input type="password" id="code" placeholder="hint: it's you">
-  <br>
+  <input type="password" id="code" placeholder="hint: you know it">
   <button onclick="login()">Unlock</button>
   <p id="error"></p>
 </div>
-<div id="app" style="display:none;">
-  <!-- ALL your existing Boyfriend OS content goes here -->
-</div>
-function login() {
-  const input = document.getElementById("code").value;
 
-  if (input.toLowerCase() === "you") {
+<!-- MAIN APP -->
+<div id="app" style="display:none;">
+
+  <h1>Boyfriend OS v3.0</h1>
+
+  <div class="box">
+    <h3>System Status</h3>
+    <p>💻 Stability: Surprisingly stable</p>
+    <p>🧠 Intelligence: High but emotionally distracted</p>
+    <p>💖 Attachment Level: Critical</p>
+  </div>
+
+  <div class="box">
+    <h3>Love Generator</h3>
+    <button onclick="love()">Run Program</button>
+    <p id="msg"></p>
+  </div>
+
+  <div class="box">
+    <h3>Compile Affection.exe</h3>
+    <button onclick="compile()">Compile</button>
+    <p id="compile"></p>
+  </div>
+
+  <div class="box">
+    <h3>System Menu</h3>
+    <select onchange="menu(this.value)">
+      <option value="">Select module</option>
+      <option value="love">Love Engine</option>
+      <option value="bugs">Bug Report System</option>
+      <option value="chaos">Chaos Mode</option>
+    </select>
+    <p id="menuOut"></p>
+  </div>
+
+  <div class="box">
+    <h3>System Audio</h3>
+    <button onclick="music()">Play / Pause Mood</button>
+    <audio id="bgm" loop>
+      <source src="" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <button onclick="chaos()">Enable Debug Mode</button>
+  <p id="chaos"></p>
+
+</div>
+
+<script>
+const messages = [
+  "You’re my favorite system process.",
+  "I’d debug your life anytime.",
+  "You make my CPU overheat (emotionally).",
+  "You’re annoyingly perfect.",
+  "Still choosing you. Every loop."
+];
+
+function login() {
+  const code = document.getElementById("code").value;
+
+  if (code.toLowerCase() === "youssef") {
     document.getElementById("login").style.display = "none";
     document.getElementById("app").style.display = "block";
   } else {
-    document.getElementById("error").innerText = "Access denied. Try again.";
+    document.getElementById("error").innerText = "Access denied.";
   }
 }
-<div class="box">
-  <h3>System Audio</h3>
-  <button onclick="toggleMusic()">Play/Pause Mood</button>
-</div>
 
-<audio id="bgmusic" loop>
-  <source src="your-music-file.mp3" type="audio/mpeg">
-</audio>
-function toggleMusic() {
-  const music = document.getElementById("bgmusic");
-  if (music.paused) {
-    music.play();
-  } else {
-    music.pause();
-  }
+function love() {
+  document.getElementById("msg").innerText =
+    messages[Math.floor(Math.random() * messages.length)];
 }
-<div class="box">
-  <h3>System Menu</h3>
 
-  <select onchange="menuAction(this.value)">
-    <option value="">Select module</option>
-    <option value="love">Love Engine</option>
-    <option value="bugs">Bug Reports</option>
-    <option value="chaos">Chaos Mode</option>
-  </select>
+function compile() {
+  document.getElementById("compile").innerText = "Compiling...";
+  setTimeout(() => {
+    document.getElementById("compile").innerText = "Build successful. I love you.";
+  }, 1200);
+}
 
-  <p id="menuOutput"></p>
-</div>
-function menuAction(val) {
-  const out = document.getElementById("menuOutput");
+function menu(val) {
+  const out = document.getElementById("menuOut");
 
   if (val === "love") {
     out.innerText = "Running emotional dependency module...";
   } else if (val === "bugs") {
-    out.innerText = "Too many feelings detected.";
+    out.innerText = "Bug detected: too much thinking about him.";
   } else if (val === "chaos") {
-    out.innerText = "SYSTEM OVERFLOW: missing boyfriend detected.";
+    out.innerText = "SYSTEM ERROR: boyfriend not found nearby.";
   }
 }
+
+function music() {
+  const m = document.getElementById("bgm");
+  if (m.paused) m.play();
+  else m.pause();
+}
+
+function chaos() {
+  document.getElementById("chaos").innerText =
+    "DEBUG MODE: missing boyfriend detected ❤️";
+}
+</script>
+
+</body>
+</html>
